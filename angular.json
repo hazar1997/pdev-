@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "a1514f22-e679-45b1-a33a-be0dcc213b69"
+    "analytics": "90b4b749-7243-4954-a45a-b16ceff4ca6c"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "consomitounsi": {
+    "ShopProject": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/consomitounsi",
+            "outputPath": "dist/ShopProject",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -30,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              
               "src/styles.css"
             ],
             "scripts": []
@@ -72,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "consomitounsi:build:production"
+              "browserTarget": "ShopProject:build:production"
             },
             "development": {
-              "browserTarget": "consomitounsi:build:development"
+              "browserTarget": "ShopProject:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "consomitounsi:build"
+            "browserTarget": "ShopProject:build"
           }
         },
         "test": {
@@ -106,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "consomitounsi"
+  "defaultProject": "ShopProject"
 }
