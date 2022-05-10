@@ -95,7 +95,9 @@ public class PanierServiceImpl implements PanierService {
 		return this.get_Elment_List(user);
 	}
 	
+	@Override
 	public int countProductByUser(long user_id){
 		return panierRepository.countProductByUser(user_id);
 	}
-	}
+	
+}

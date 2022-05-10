@@ -42,7 +42,7 @@ public interface ProduitRepository extends JpaRepository<Produit,Long>{
 			+ "LEFT JOIN rating ON produit.id = rating.prod_id\r\n"
 			+ "GROUP BY produit.id\r\n"
 			+ "ORDER BY  x DESC, nbrRating DESC\r\n"
-			+ "LIMIT 4", nativeQuery = true)
+			+ "LIMIT 8", nativeQuery = true)
 	public List<Object[]> mostLikedProduct();
 	
 	@Query(value = "SELECT produit.id, `description`, `imageurl`, `name`, `price`, `categorie`, COUNT(*) as nbrRating, SUM(rating.rating)/COUNT(*) as x \r\n"
@@ -51,7 +51,7 @@ public interface ProduitRepository extends JpaRepository<Produit,Long>{
 			+ "WHERE categorie= :categ\r\n"
 			+ "GROUP BY produit.id\r\n"
 			+ "ORDER BY  x DESC, nbrRating DESC\r\n"
-			+ "LIMIT 4", nativeQuery = true)
+			+ "LIMIT 8", nativeQuery = true)
 	public List<Object[]> filterProductByCategorieLimit(@Param("categ") String categ);
 	
 	@Query(value = "SELECT produit.id, `description`, `imageurl`, `name`, `price`, `categorie`, COUNT(*) as nbrRating, SUM(rating.rating)/COUNT(*) as x \r\n"

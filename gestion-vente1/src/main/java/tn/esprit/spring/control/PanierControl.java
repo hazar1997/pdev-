@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.config.ApiResponse;
 import tn.esprit.spring.dto.AddToPanierDto;
 import tn.esprit.spring.dto.PanierDto;
+import tn.esprit.spring.dto.nbrPanier;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.service.PanierService;
 import tn.esprit.spring.service.UserServiceImpl;
@@ -105,6 +106,16 @@ public class PanierControl {
 
     	return new ResponseEntity<>(pd, HttpStatus.OK);
 
+    }
+    
+    @CrossOrigin(origins= "http://localhost:4200")
+    @GetMapping("/nbrPanier")
+    @ResponseBody
+    public ResponseEntity<nbrPanier>  countProductByUser(@RequestParam("user_id") long id){
+    	User user = userService.getUserById(id);
+    	nbrPanier np = new nbrPanier();
+    	np.setNbrelempanier(panierService.countProductByUser(user.getId()));
+    	return new ResponseEntity<>(np, HttpStatus.OK);
     }
 
 }

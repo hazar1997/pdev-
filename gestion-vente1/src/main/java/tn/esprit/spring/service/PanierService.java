@@ -23,5 +23,7 @@ public interface PanierService {
 	public PanierDto updateQtePlus(User user, long productId);
 
 	public PanierDto updateQteMinus(User user, long productId);
+
+	int countProductByUser(long user_id);
     
 }
