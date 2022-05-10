@@ -66,6 +66,7 @@ public class SujetRestControl {
 		//emailService.sendEmail("firas.benaissa@gmail.com", "Sujet modifié avec succ�s", "Sujet modifié avec succ�s");
 		s.setIdSujet(sujett.getIdSujet());
 		s.setLibelleSujet(sujett.getLibelleSujet());
+		s.setDecreption(sujett.getDecreption());
 		Sujet updateSujet = sujetRepository.save(s);
 		return ResponseEntity.ok(updateSujet);
 	}

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,7 @@ import tn.esprit.spring.services.SujetService;
 @RestController
 @RequestMapping("/comment")
 @Api(tags = "Gestion Commantaire")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommantaireRestControl {
 
 	//couplage faible 
@@ -66,12 +69,16 @@ public class CommantaireRestControl {
 	
 
 
-	@PutMapping("/modify-comment")
-	public Commantaire modifyComment(@RequestBody Commantaire comment) {
-		return commentService.updateComment(comment);
+	@PutMapping("/modify-comment/{comment-id")
+	public ResponseEntity<Commantaire> modifyComment(@RequestBody Commantaire comment,@PathVariable("comment-id") Long commentId) {
+		
+		Commantaire c = commentRepo.findById(commentId).get();
+		c.setComment(comment.getComment());
+		Commantaire updateComment = commentRepo.save(c);
+		return ResponseEntity.ok(updateComment);
 	}
 
-	@DeleteMapping("/remove-Comment/{comment-id}")
+	@DeleteMapping("/remove-comment/{comment-id}")
 	public void removeComment(@PathVariable("comment-id") Long commentId) 
 	{
 		
